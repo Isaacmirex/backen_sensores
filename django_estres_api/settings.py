@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'django_estres_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST':'b2f6s8hh3vn8bqxzrgtj-postgresql.services.clever-cloud.com',
+        'PORT': 50013,
+        'NAME': 'b2f6s8hh3vn8bqxzrgtj',
+        'USER': 'uq8r1u4mptu9tf8fu7km',
+        'PASSWORD': 'RzJrGmIHvhOArDPl2hqVOPdMKKpx5F',
     }
 }
 
