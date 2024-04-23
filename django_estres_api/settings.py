@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'django_estres_api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'HOST':'b2f6s8hh3vn8bqxzrgtj-postgresql.services.clever-cloud.com',
-        'PORT': 50013,
-        'NAME': 'b2f6s8hh3vn8bqxzrgtj',
-        'USER': 'uq8r1u4mptu9tf8fu7km',
-        'PASSWORD': 'RzJrGmIHvhOArDPl2hqVOPdMKKpx5F',
+        'HOST':'dpg-cohh9sgl5elc73co7hqg-a.oregon-postgres.render.com',
+        'PORT': 5432,
+        'NAME': 'sensores',
+        'USER': 'isaacmirex',
+        'PASSWORD': '0r7zZ5aeizUXELOlRE0EY49JLgzyfWhf',
     }
 }
 
