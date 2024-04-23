@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\isaacR\Documents\Tesis\desarrollo-20204\backend_utn\venv
+set VIRTUAL_ENV=D:\TESIS\REALIZACION\backen_django\backen_sensores\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
