@@ -10,6 +10,7 @@ class Usuario(models.Model):
     usr_vive_solo = models.SmallIntegerField(null=True)
     usr_facultad = models.CharField(max_length=50)
     usr_trabaja = models.SmallIntegerField(null=True)
+    usr_estres = models.SmallIntegerField(null=True)
 
     class Meta:
         db_table = 'usuario'
