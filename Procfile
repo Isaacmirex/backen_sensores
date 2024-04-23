@@ -1,0 +1,1 @@
+web: gunicorn django_estres_api.wsgi
