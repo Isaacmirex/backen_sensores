@@ -1,1 +1,1 @@
-web: gunicorn django_estres_api.wsgi
+web: python manage.py collectstatic && gunicorn django_estres_api.wsgi
