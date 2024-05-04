@@ -136,4 +136,5 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 CORS_ALLOWED_ORIGINS = [
      "http://*",
      "https://*",
+     "http://localhost:5173",
 ]
