@@ -39,8 +39,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'whitenoise.runserver_nostatic',
     'detecion_estres',
-    'rest_framework',
-    'corsheaders',  # Añadido para CORS
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -133,6 +132,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # Configuración de CORS para permitir todos los orígenes
+# Configuración de CORS para permitir cualquier origen
 CORS_ALLOWED_ORIGINS = [
-     "*",
+     "http://*",
+     "https://*",
 ]
