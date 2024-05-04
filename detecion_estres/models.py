@@ -31,6 +31,7 @@ class Encuesta(models.Model):
     ec_pregunta_12 = models.IntegerField()
     ec_pregunta_13 = models.IntegerField()
     ec_pregunta_14 = models.IntegerField()
+    ec_total = models.IntegerField(null=True)
     usr = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
