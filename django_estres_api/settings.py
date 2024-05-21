@@ -133,3 +133,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # Configuración de CORS para permitir todos los orígenes
 CORS_ALLOW_ALL_ORIGINS = True
+
