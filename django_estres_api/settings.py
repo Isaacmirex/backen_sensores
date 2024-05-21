@@ -133,5 +133,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # Configuración de CORS para permitir todos los orígenes
 CORS_ALLOW_ALL_ORIGINS = True
+APPEND_SLASH = False
 CSRF_TRUSTED_ORIGINS = ['http://*','https://*','https://web-production-8f98.up.railway.app']
 STATIC_URL = '/static/'  # Agrega la barra diagonal al final
