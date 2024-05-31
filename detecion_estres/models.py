@@ -43,7 +43,7 @@ class Sensores(models.Model):
     sen_temperatura = models.IntegerField()
     sen_freq_respiratoria = models.IntegerField()
     sen_freq_cardiaca = models.IntegerField()
-    usr = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usr = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         db_table = 'sensores'
