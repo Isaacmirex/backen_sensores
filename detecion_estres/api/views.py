@@ -17,19 +17,37 @@ class SensoresViewSet(viewsets.ModelViewSet):
         
         if response.status_code == status.HTTP_201_CREATED:
             try:
-                # Obtener el último usuario ingresado
-                ultimo_usuario = Usuario.objects.latest('usr_id')
-                # Obtener la última encuesta del usuario
-                ultima_encuesta = Encuesta.objects.filter(usr=ultimo_usuario).latest('ec_id')
+                # Obtener el último usuario ingresado, si existe
+                try:
+                    ultimo_usuario = Usuario.objects.latest('usr_id')
+                except Usuario.DoesNotExist:
+                    ultimo_usuario = None
+                
+                # Obtener la última encuesta del usuario, si el usuario existe
+                if ultimo_usuario:
+                    try:
+                        ultima_encuesta = Encuesta.objects.filter(usr=ultimo_usuario).latest('ec_id')
+                    except Encuesta.DoesNotExist:
+                        ultima_encuesta = None
+                else:
+                    ultima_encuesta = None
+                
                 # Obtener los sensores recién creados
-                sensores = Sensores.objects.get(pk=response.data['sen_id'])
+                try:
+                    sensores = Sensores.objects.get(pk=response.data['sen_id'])
+                except Sensores.DoesNotExist:
+                    return Response({"error": "No se encontraron datos de sensores recién creados."}, status=status.HTTP_400_BAD_REQUEST)
                 
-                # Calcular el estrés
-                estres = calcular_estres(ultimo_usuario, ultima_encuesta, sensores)
-                
-                # Actualizar el campo usr_estres del último usuario
-                ultimo_usuario.usr_estres = estres
-                ultimo_usuario.save()
+                # Calcular el estrés solo si tenemos usuario y encuesta
+                if ultimo_usuario and ultima_encuesta:
+                    estres = calcular_estres(ultimo_usuario, ultima_encuesta, sensores)
+                    # Actualizar el campo usr_estres del último usuario
+                    ultimo_usuario.usr_estres = estres
+                    ultimo_usuario.save()
+                else:
+                    # Manejar el caso donde no hay usuario o encuesta
+                    return Response({"warning": "No se pudo calcular el estrés por falta de usuario o encuesta."}, status=status.HTTP_200_OK)
+            
             except ValueError as e:
                 return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
         
