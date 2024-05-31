@@ -44,6 +44,7 @@ class SensoresViewSet(viewsets.ModelViewSet):
                     # Actualizar el campo usr_estres del último usuario
                     ultimo_usuario.usr_estres = estres
                     ultimo_usuario.save()
+                    print(f"Estres calculado: {estres}")  # Debug print para confirmar el cálculo
                 else:
                     # Manejar el caso donde no hay usuario o encuesta
                     return Response({"warning": "No se pudo calcular el estrés por falta de usuario o encuesta."}, status=status.HTTP_200_OK)
