@@ -39,8 +39,8 @@ class Encuesta(models.Model):
 
 class Sensores(models.Model):
     sen_id = models.AutoField(primary_key=True)
-    sen_emg = models.IntegerField()
     sen_temperatura = models.IntegerField()
+    
     sen_freq_respiratoria = models.IntegerField()
     sen_freq_cardiaca = models.IntegerField()
     usr = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True, blank=True)
