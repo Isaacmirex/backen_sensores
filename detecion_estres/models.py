@@ -10,7 +10,26 @@ class Usuario(models.Model):
     usr_vive_solo = models.SmallIntegerField(null=True)
     usr_facultad = models.CharField(max_length=50)
     usr_trabaja = models.SmallIntegerField(null=True)
-    usr_estres = models.SmallIntegerField(null=True)
+    usr_estres = models.SmallIntegerField(null=True)  # Nivel de estrés en puntos
+    usr_estresPuntos = models.FloatField(null=True)  # Porcentaje de estrés según PSS-14
+    usr_estresPuntos_texto = models.CharField(max_length=255, null=True, blank=True)  # Descripción basada en PSS-14
+
+    def save(self, *args, **kwargs):
+        # Convertir usr_estresPuntos a porcentaje y asignar una descripción basada en la escala PSS-14
+        if self.usr_estresPuntos is not None:
+            estres_maximo = 56.0  # Puntuación máxima según la PSS-14
+            porcentaje_estres = (self.usr_estresPuntos / estres_maximo) * 100
+
+            if 0 <= self.usr_estresPuntos <= 14:
+                self.usr_estresPuntos_texto = f'Casi nunca o nunca está estresado. ({porcentaje_estres:.2f}%)'
+            elif 15 <= self.usr_estresPuntos <= 28:
+                self.usr_estresPuntos_texto = f'De vez en cuando está estresado. ({porcentaje_estres:.2f}%)'
+            elif 29 <= self.usr_estresPuntos <= 42:
+                self.usr_estresPuntos_texto = f'A menudo está estresado. ({porcentaje_estres:.2f}%)'
+            elif 43 <= self.usr_estresPuntos <= 56:
+                self.usr_estresPuntos_texto = f'Muy a menudo está estresado. ({porcentaje_estres:.2f}%)'
+
+        super().save(*args, **kwargs)
 
     class Meta:
         db_table = 'usuario'
@@ -40,7 +59,6 @@ class Encuesta(models.Model):
 class Sensores(models.Model):
     sen_id = models.AutoField(primary_key=True)
     sen_temperatura = models.IntegerField()
-    
     sen_freq_respiratoria = models.IntegerField()
     sen_freq_cardiaca = models.IntegerField()
     usr = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True, blank=True)

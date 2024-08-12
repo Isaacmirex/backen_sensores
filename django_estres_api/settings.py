@@ -81,13 +81,24 @@ WSGI_APPLICATION = 'django_estres_api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'HOST':'dpg-cohh9sgl5elc73co7hqg-a.oregon-postgres.render.com',
+        'HOST': 'dpg-cohh9sgl5elc73co7hqg-a.oregon-postgres.render.com',
         'PORT': 5432,
         'NAME': 'sensores',
         'USER': 'isaacmirex',
         'PASSWORD': '0r7zZ5aeizUXELOlRE0EY49JLgzyfWhf',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'HOST': 'viaduct.proxy.rlwy.net',
+#         'PORT': 21507,
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': 'NuDvLkDOAkZjkGjVycQzmKVlsqZTEKxO',
+#     }
+# }
+
 
 
 # Password validation
