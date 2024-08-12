@@ -10,9 +10,9 @@ class Usuario(models.Model):
     usr_vive_solo = models.SmallIntegerField(null=True)
     usr_facultad = models.CharField(max_length=50)
     usr_trabaja = models.SmallIntegerField(null=True)
-    usr_estresPuntos = models.SmallIntegerField(null=True)  # Nivel de estrés en puntos
-    usr_estresPorcentaje = models.FloatField(null=True)  # Porcentaje de estrés según PSS-14
-    usr_estresTexto = models.CharField(max_length=255, null=True, blank=True)  # Descripción basada en PSS-14
+    usr_estres_puntos = models.SmallIntegerField(null=True)  # Nivel de estrés en puntos
+    usr_estres_porcentaje = models.FloatField(null=True)  # Porcentaje de estrés según PSS-14
+    usr_estres_texto = models.CharField(max_length=255, null=True, blank=True)  # Descripción basada en PSS-14
 
     def save(self, *args, **kwargs):
         # Convertir usr_estresPuntos a porcentaje y asignar una descripción basada en la escala PSS-14
